@@ -32,3 +32,10 @@ The Flask process seeds three restaurants, menu items, inventory, three delivery
 ## Notes
 - This is a demonstration/prototype only. Do not use it for real customer data, payments, or production authentication.
 - The landing page HTML, CSS, scroll-frame assets, and visual structure are preserved.
+
+## Deploy on Render
+1. Push this repository to GitHub.
+2. Open the Render Blueprint URL: `https://dashboard.render.com/select-repo?type=blueprint&repo=https://github.com/Devaa1213/foodflow`
+3. Connect the GitHub repository and approve the `foodflow` web service.
+4. Render will install `backend/requirements.txt` and start the app with Gunicorn.
+5. Open the generated Render URL. The Flask server serves both the frontend and `/api/*` routes.
