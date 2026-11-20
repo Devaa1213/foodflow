@@ -1,0 +1,82 @@
+/* =========================================================
+   FOODFLOW — Responsive rules
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .ff-steps { grid-template-columns: repeat(2, 1fr); }
+  .ff-feature-grid { grid-template-columns: 1fr; }
+  .ff-restaurant-strip { grid-template-columns: repeat(2, 1fr); }
+  .ff-stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .ff-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .ff-app { grid-template-columns: 1fr; }
+  .ff-sidebar {
+    position: fixed;
+    left: -260px;
+    width: 240px;
+    z-index: 200;
+    transition: left 0.25s ease;
+    box-shadow: var(--ff-shadow-lg);
+  }
+  .ff-sidebar.ff-open { left: 0; }
+  .ff-mobile-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: var(--ff-white);
+    border-bottom: 1px solid var(--ff-line);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .ff-mobile-topbar button { background: none; border: none; font-size: 22px; cursor: pointer; }
+  .ff-main { padding: 22px 18px 50px; }
+  .ff-sidebar-backdrop {
+    display: none;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 150;
+  }
+  .ff-sidebar-backdrop.ff-open { display: block; }
+}
+
+@media (max-width: 720px) {
+  .ff-navbar { padding: 16px 20px; }
+  .ff-navbar-links { display: none; }
+  .ff-navbar-links.ff-open {
+    display: flex;
+    position: fixed;
+    top: 68px;
+    left: 20px;
+    right: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 10px;
+    border-radius: 14px;
+    background: rgba(33, 28, 22, 0.96);
+    box-shadow: var(--ff-shadow-lg);
+  }
+  .ff-navbar-links.ff-open a {
+    display: block;
+    padding: 12px 14px;
+  }
+  .ff-navbar-toggle { display: block; }
+  .ff-navbar-actions .ff-btn-ghost { display: none; }
+
+  .ff-hero-scroll-track { height: 550vh; }
+  .ff-hero-story-section { max-width: 90%; }
+
+  .ff-section { padding: 70px 0; }
+  .ff-steps { grid-template-columns: 1fr; }
+  .ff-restaurant-strip { grid-template-columns: 1fr; }
+  .ff-stat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .ff-grid-3, .ff-grid-2 { grid-template-columns: 1fr; }
+  .ff-cta-band { margin: 0 18px; padding: 48px 24px; }
+  .ff-container { padding: 0 20px; }
+  .ff-modal { padding: 26px 22px; }
+}
+
+@media (max-width: 480px) {
+  .ff-stat-grid { grid-template-columns: 1fr 1fr; }
+  .ff-hero-final .ff-brand { font-size: 44px; }
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FoodFlow — Smart Food Delivery Management</title>
+<link rel="stylesheet" href="css/global.css" />
+<link rel="stylesheet" href="css/landing.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="ff-navbar" id="ff-navbar">
+  <div class="ff-navbar-logo">FoodFlow</div>
+  <ul class="ff-navbar-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#restaurants">Restaurants</a></li>
+    <li><a href="#" data-open-auth="login">Login</a></li>
+  </ul>
+  <div class="ff-navbar-actions">
+    <button class="ff-btn ff-btn-light ff-btn-sm" data-open-auth="register">Get Started</button>
+    <button class="ff-navbar-toggle" id="ff-navbar-toggle" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ CINEMATIC HERO ============ -->
+<span id="home" class="ff-anchor" aria-hidden="true"></span>
+<div class="ff-hero-scroll-track" id="ff-hero-scroll-track">
+  <div class="ff-hero-sticky">
+    <canvas id="ff-hero-canvas"></canvas>
+    <div class="ff-hero-gradient"></div>
+    <div id="ff-hero-particles"></div>
+
+    <div class="ff-hero-loading" id="ff-hero-loading">
+      <span class="ff-spinner"></span>
+      <span>Loading experience... <span id="ff-hero-loading-pct">0%</span></span>
+    </div>
+
+    <div class="ff-hero-story">
+      <div class="ff-hero-story-section">
+        <span class="ff-eyebrow">Origin</span>
+        <h2>Food begins with where it comes from.</h2>
+      </div>
+      <div class="ff-hero-story-section">
+        <span class="ff-eyebrow">Craft</span>
+        <h2>Where every meal has a story.</h2>
+      </div>
+      <div class="ff-hero-story-section">
+        <span class="ff-eyebrow">Kitchen</span>
+        <h2>Prepared with care.</h2>
+      </div>
+      <div class="ff-hero-story-section">
+        <span class="ff-eyebrow">Logistics</span>
+        <h2>Delivered with intelligence.</h2>
+      </div>
+    </div>
+
+    <div class="ff-hero-final" id="ff-hero-final">
+      <div class="ff-brand">FoodFlow</div>
+      <div class="ff-tagline">Smart Food Delivery Management System</div>
+      <div class="ff-subtagline">From kitchen to doorstep.</div>
+      <button class="ff-btn ff-btn-primary" data-open-auth="register">Explore Platform</button>
+    </div>
+
+    <div class="ff-scroll-hint" id="ff-scroll-hint">
+      <span>Scroll</span>
+      <span class="ff-scroll-dot"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="ff-section" id="how-it-works">
+  <div class="ff-container">
+    <div class="ff-section-head">
+      <span class="ff-eyebrow">How It Works</span>
+      <h2>From your kitchen to their door</h2>
+    </div>
+    <div class="ff-steps">
+      <div class="ff-step">
+        <div class="ff-step-num">1</div>
+        <h3>Browse & order</h3>
+        <p>Customers explore restaurants nearby and build their cart in seconds.</p>
+      </div>
+      <div class="ff-step">
+        <div class="ff-step-num">2</div>
+        <h3>Kitchen confirms</h3>
+        <p>Restaurants accept, prepare, and mark orders ready for pickup.</p>
+      </div>
+      <div class="ff-step">
+        <div class="ff-step-num">3</div>
+        <h3>Smart assignment</h3>
+        <p>The nearest, least-busy delivery partner is recommended automatically.</p>
+      </div>
+      <div class="ff-step">
+        <div class="ff-step-num">4</div>
+        <h3>Live tracking</h3>
+        <p>Customers follow every step until the order is delivered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES / INNOVATIONS ============ -->
+<section class="ff-section ff-section-alt" id="features">
+  <div class="ff-container">
+    <div class="ff-section-head">
+      <span class="ff-eyebrow">Built-in Intelligence</span>
+      <h2>Four small innovations that add up</h2>
+    </div>
+    <div class="ff-feature-grid">
+      <div class="ff-feature-card">
+        <span class="ff-feature-tag">Smart Assignment</span>
+        <h3>The right partner, every time</h3>
+        <p>A transparent scoring heuristic weighs distance, active orders, and workload to recommend the best available delivery partner.</p>
+      </div>
+      <div class="ff-feature-card">
+        <span class="ff-feature-tag">Order Batching</span>
+        <h3>Fewer trips, faster kitchens</h3>
+        <p>Nearby orders from the same restaurant are flagged as batching opportunities, saving distance with minimal added delay.</p>
+      </div>
+      <div class="ff-feature-card">
+        <span class="ff-feature-tag">Food Waste Alerts</span>
+        <h3>Stock that matches demand</h3>
+        <p>A rule-based check compares inventory to expected demand and flags excess stock before it goes to waste.</p>
+      </div>
+      <div class="ff-feature-card">
+        <span class="ff-feature-tag">Dynamic ETA</span>
+        <h3>Estimates that stay honest</h3>
+        <p>Delivery windows recalculate as prep time, partner assignment, and pickup status change in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESTAURANTS PREVIEW ============ -->
+<section class="ff-section" id="restaurants">
+  <div class="ff-container">
+    <div class="ff-section-head">
+      <span class="ff-eyebrow">On FoodFlow</span>
+      <h2>Kitchens worth discovering</h2>
+    </div>
+    <div class="ff-restaurant-strip">
+      <div class="ff-restaurant-preview">
+        <div class="ff-rp-image">🥗</div>
+        <div class="ff-rp-body">
+          <h4>Green Leaf Kitchen</h4>
+          <p class="ff-rp-meta">Healthy · Multi-cuisine · 20–30 min</p>
+        </div>
+      </div>
+      <div class="ff-restaurant-preview">
+        <div class="ff-rp-image">🥞</div>
+        <div class="ff-rp-body">
+          <h4>Village Spice</h4>
+          <p class="ff-rp-meta">South Indian · 18–28 min</p>
+        </div>
+      </div>
+      <div class="ff-restaurant-preview">
+        <div class="ff-rp-image">🍛</div>
+        <div class="ff-rp-body">
+          <h4>The Rustic Table</h4>
+          <p class="ff-rp-meta">North Indian · Continental · 25–35 min</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="ff-section">
+  <div class="ff-cta-band">
+    <h2>Ready to taste the flow?</h2>
+    <p>Join as a customer, restaurant, or delivery partner — one platform, four roles, built for a real demo.</p>
+    <button class="ff-btn ff-btn-primary" data-open-auth="register">Get Started</button>
+  </div>
+</section>
+
+<footer class="ff-footer">
+  <div class="ff-container">© 2026 FoodFlow — a college mini-project prototype.</div>
+</footer>
+
+<!-- ============ AUTH MODAL ============ -->
+<div class="ff-modal-backdrop" id="ff-auth-modal">
+  <div class="ff-modal">
+    <button class="ff-modal-close" id="ff-modal-close" aria-label="Close">✕</button>
+    <div class="ff-modal-tabs">
+      <div class="ff-modal-tab ff-active" data-tab="login">Log In</div>
+      <div class="ff-modal-tab" data-tab="register">Sign Up</div>
+    </div>
+
+    <form id="ff-login-form">
+      <div class="ff-field">
+        <label class="ff-label" for="ff-login-email">Email</label>
+        <input class="ff-input" type="email" id="ff-login-email" required />
+      </div>
+      <div class="ff-field">
+        <label class="ff-label" for="ff-login-password">Password</label>
+        <input class="ff-input" type="password" id="ff-login-password" required minlength="6" />
+      </div>
+      <button class="ff-btn ff-btn-primary ff-btn-block" type="submit">Log In</button>
+    </form>
+
+    <form id="ff-register-form" style="display:none;">
+      <div class="ff-field">
+        <label class="ff-label" for="ff-reg-name">Full name</label>
+        <input class="ff-input" type="text" id="ff-reg-name" required />
+      </div>
+      <div class="ff-field">
+        <label class="ff-label" for="ff-reg-email">Email</label>
+        <input class="ff-input" type="email" id="ff-reg-email" required />
+      </div>
+      <div class="ff-field">
+        <label class="ff-label" for="ff-reg-password">Password</label>
+        <input class="ff-input" type="password" id="ff-reg-password" required minlength="6" />
+      </div>
+      <div class="ff-field">
+        <label class="ff-label" for="ff-reg-role">I am a...</label>
+        <select class="ff-select" id="ff-reg-role">
+          <option value="customer">Customer</option>
+          <option value="restaurant">Restaurant</option>
+          <option value="delivery">Delivery Partner</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <button class="ff-btn ff-btn-primary ff-btn-block" type="submit">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/landing.js"></script>
+</body>
+</html>

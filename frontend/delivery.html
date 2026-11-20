@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FoodFlow — Delivery Partner</title>
+<link rel="stylesheet" href="css/global.css" />
+<link rel="stylesheet" href="css/dashboard.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<div class="ff-sidebar-backdrop" id="ff-sidebar-backdrop"></div>
+
+<div class="ff-app">
+  <aside class="ff-sidebar" id="ff-sidebar">
+    <div class="ff-sidebar-logo">FoodFlow</div>
+    <ul class="ff-sidebar-nav">
+      <li><button class="ff-nav-item ff-active" data-view="dashboard">🏠 Dashboard</button></li>
+      <li><button class="ff-nav-item" data-view="available">🛵 Available Deliveries</button></li>
+      <li><button class="ff-nav-item" data-view="active">📍 Active Delivery</button></li>
+      <li><button class="ff-nav-item" data-view="history">🧾 Delivery History</button></li>
+      <li><button class="ff-nav-item" data-view="earnings">💰 Earnings</button></li>
+      <li><button class="ff-nav-item" data-view="profile">👤 Profile</button></li>
+    </ul>
+    <div class="ff-sidebar-foot">
+      <div class="ff-user-name" id="ff-sidebar-name">—</div>
+      <div class="ff-user-role">Delivery Partner</div>
+      <button class="ff-logout-btn" id="ff-logout-btn">Log Out</button>
+    </div>
+  </aside>
+
+  <main class="ff-main">
+    <div class="ff-mobile-topbar">
+      <button id="ff-mobile-menu-btn" aria-label="Open menu">☰</button>
+      <div class="ff-navbar-logo" style="color:var(--ff-ink);">FoodFlow</div>
+      <span></span>
+    </div>
+
+    <!-- DASHBOARD -->
+    <section class="ff-view ff-active" data-view="dashboard">
+      <div class="ff-topbar">
+        <div><h1 id="ff-partner-name">Dashboard</h1><p>For this prototype, your location is simulated rather than tracked live.</p></div>
+        <button class="ff-btn ff-btn-ghost" id="ff-status-toggle">● Offline</button>
+      </div>
+      <div class="ff-stat-grid">
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Today's Deliveries</div><div class="ff-stat-value" id="ff-stat-deliveries">0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Today's Earnings</div><div class="ff-stat-value" id="ff-stat-earnings">₹0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Rating</div><div class="ff-stat-value" id="ff-stat-rating">—</div></div>
+      </div>
+      <h2 class="ff-view-title">Active delivery</h2>
+      <div id="ff-dashboard-active"></div>
+    </section>
+
+    <!-- AVAILABLE DELIVERIES -->
+    <section class="ff-view" data-view="available">
+      <div class="ff-topbar"><div><h1>Available Deliveries</h1><p>Orders ready for pickup near you.</p></div></div>
+      <div id="ff-available-list"></div>
+    </section>
+
+    <!-- ACTIVE DELIVERY -->
+    <section class="ff-view" data-view="active">
+      <div class="ff-topbar"><div><h1>Active Delivery</h1><p>Update status as you go.</p></div></div>
+      <div id="ff-active-list"></div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="ff-view" data-view="history">
+      <div class="ff-topbar"><div><h1>Delivery History</h1><p>Completed deliveries.</p></div></div>
+      <div class="ff-card" id="ff-history-content"></div>
+    </section>
+
+    <!-- EARNINGS -->
+    <section class="ff-view" data-view="earnings">
+      <div class="ff-topbar"><div><h1>Earnings</h1><p>What you've made on FoodFlow.</p></div></div>
+      <div class="ff-card" style="padding:22px; max-width:380px;" id="ff-earnings-content"></div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="ff-view" data-view="profile">
+      <div class="ff-topbar"><div><h1>Profile</h1><p>Your delivery partner account.</p></div></div>
+      <div class="ff-card" style="padding:22px; max-width:420px;" id="ff-profile-content"></div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/delivery.js"></script>
+</body>
+</html>

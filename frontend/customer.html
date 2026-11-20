@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FoodFlow — Customer</title>
+<link rel="stylesheet" href="css/global.css" />
+<link rel="stylesheet" href="css/dashboard.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<div class="ff-sidebar-backdrop" id="ff-sidebar-backdrop"></div>
+
+<div class="ff-app">
+  <aside class="ff-sidebar" id="ff-sidebar">
+    <div class="ff-sidebar-logo">FoodFlow</div>
+    <ul class="ff-sidebar-nav">
+      <li><button class="ff-nav-item ff-active" data-view="dashboard">🏠 Dashboard</button></li>
+      <li><button class="ff-nav-item" data-view="restaurants">🍽️ Restaurants</button></li>
+      <li><button class="ff-nav-item" data-view="cart">🛒 Cart <span id="ff-cart-count-badge"></span></button></li>
+      <li><button class="ff-nav-item" data-view="tracking">📍 Order Tracking</button></li>
+      <li><button class="ff-nav-item" data-view="history">🧾 Order History</button></li>
+      <li><button class="ff-nav-item" data-view="profile">👤 Profile</button></li>
+    </ul>
+    <div class="ff-sidebar-foot">
+      <div class="ff-user-name" id="ff-sidebar-name">—</div>
+      <div class="ff-user-role">Customer</div>
+      <button class="ff-logout-btn" id="ff-logout-btn">Log Out</button>
+    </div>
+  </aside>
+
+  <main class="ff-main">
+    <div class="ff-mobile-topbar">
+      <button id="ff-mobile-menu-btn" aria-label="Open menu">☰</button>
+      <div class="ff-navbar-logo" style="color:var(--ff-ink);">FoodFlow</div>
+      <span></span>
+    </div>
+
+    <!-- DASHBOARD VIEW -->
+    <section class="ff-view ff-active" data-view="dashboard">
+      <div class="ff-topbar">
+        <div>
+          <h1 id="ff-greeting">Good day!</h1>
+          <p>What are you craving today?</p>
+        </div>
+      </div>
+      <div class="ff-field" style="max-width:420px; margin-bottom:26px;">
+        <input class="ff-input" id="ff-search-input" placeholder="Search food or restaurants..." />
+      </div>
+      <h2 class="ff-view-title">Popular categories</h2>
+      <div class="ff-chip-row">
+        <div class="ff-chip">🍕 Pizza</div>
+        <div class="ff-chip">🍔 Burgers</div>
+        <div class="ff-chip">🍛 Indian</div>
+        <div class="ff-chip">🥗 Healthy</div>
+        <div class="ff-chip">🍰 Desserts</div>
+        <div class="ff-chip">☕ Beverages</div>
+      </div>
+      <h2 class="ff-view-title">Nearby restaurants</h2>
+      <div class="ff-grid-3" id="ff-dashboard-restaurants"></div>
+    </section>
+
+    <!-- RESTAURANTS LIST VIEW -->
+    <section class="ff-view" data-view="restaurants">
+      <div class="ff-topbar"><div><h1>Restaurants</h1><p>Order from kitchens near you.</p></div></div>
+      <div class="ff-grid-3" id="ff-restaurants-list"></div>
+    </section>
+
+    <!-- RESTAURANT DETAIL VIEW -->
+    <section class="ff-view" data-view="restaurant-detail">
+      <button class="ff-btn ff-btn-ghost ff-btn-sm" id="ff-back-to-restaurants" style="margin-bottom:18px;">← Back</button>
+      <div class="ff-topbar">
+        <div>
+          <h1 id="ff-rd-name">Restaurant</h1>
+          <p id="ff-rd-meta"></p>
+        </div>
+      </div>
+      <div class="ff-card" id="ff-rd-menu"></div>
+    </section>
+
+    <!-- CART VIEW -->
+    <section class="ff-view" data-view="cart">
+      <div class="ff-topbar"><div><h1>Your Cart</h1><p>Review before checkout.</p></div></div>
+      <div class="ff-card" style="padding:20px;" id="ff-cart-items"></div>
+      <div class="ff-card" style="padding:20px; margin-top:18px; max-width:380px;" id="ff-cart-summary"></div>
+      <button class="ff-btn ff-btn-primary" id="ff-checkout-btn" style="margin-top:18px;">Proceed to Checkout</button>
+    </section>
+
+    <!-- CHECKOUT VIEW -->
+    <section class="ff-view" data-view="checkout">
+      <div class="ff-topbar"><div><h1>Checkout</h1><p>Confirm your order details.</p></div></div>
+      <div class="ff-grid-2">
+        <div class="ff-card" style="padding:22px;">
+          <h3 style="margin-bottom:14px;">Delivery details</h3>
+          <div class="ff-field">
+            <label class="ff-label">Delivery address</label>
+            <textarea class="ff-textarea" id="ff-checkout-address" rows="3" placeholder="Hostel block, street, landmark..."></textarea>
+          </div>
+          <div class="ff-field">
+            <label class="ff-label">Payment method</label>
+            <select class="ff-select" id="ff-checkout-payment">
+              <option>Cash on Delivery</option>
+              <option>UPI</option>
+              <option>Card</option>
+            </select>
+          </div>
+        </div>
+        <div class="ff-card" style="padding:22px;" id="ff-checkout-summary"></div>
+      </div>
+      <button class="ff-btn ff-btn-primary" id="ff-place-order-btn" style="margin-top:18px;">Place Order</button>
+    </section>
+
+    <!-- ORDER TRACKING VIEW -->
+    <section class="ff-view" data-view="tracking">
+      <div class="ff-topbar"><div><h1>Order Tracking</h1><p>Live status of your active order.</p></div></div>
+      <div id="ff-tracking-content"></div>
+    </section>
+
+    <!-- ORDER HISTORY VIEW -->
+    <section class="ff-view" data-view="history">
+      <div class="ff-topbar"><div><h1>Order History</h1><p>Everything you've ordered on FoodFlow.</p></div></div>
+      <div class="ff-card" id="ff-history-content"></div>
+    </section>
+
+    <!-- PROFILE VIEW -->
+    <section class="ff-view" data-view="profile">
+      <div class="ff-topbar"><div><h1>Profile</h1><p>Your account details.</p></div></div>
+      <div class="ff-card" style="padding:22px; max-width:420px;" id="ff-profile-content"></div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/customer.js"></script>
+</body>
+</html>

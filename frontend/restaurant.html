@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FoodFlow — Restaurant</title>
+<link rel="stylesheet" href="css/global.css" />
+<link rel="stylesheet" href="css/dashboard.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<div class="ff-sidebar-backdrop" id="ff-sidebar-backdrop"></div>
+
+<div class="ff-app">
+  <aside class="ff-sidebar" id="ff-sidebar">
+    <div class="ff-sidebar-logo">FoodFlow</div>
+    <ul class="ff-sidebar-nav">
+      <li><button class="ff-nav-item ff-active" data-view="dashboard">🏠 Dashboard</button></li>
+      <li><button class="ff-nav-item" data-view="orders">📦 Orders</button></li>
+      <li><button class="ff-nav-item" data-view="menu">📋 Menu Management</button></li>
+      <li><button class="ff-nav-item" data-view="inventory">📦 Inventory</button></li>
+      <li><button class="ff-nav-item" data-view="analytics">📊 Analytics</button></li>
+      <li><button class="ff-nav-item" data-view="profile">👤 Profile</button></li>
+    </ul>
+    <div class="ff-sidebar-foot">
+      <div class="ff-user-name" id="ff-sidebar-name">—</div>
+      <div class="ff-user-role">Restaurant</div>
+      <button class="ff-logout-btn" id="ff-logout-btn">Log Out</button>
+    </div>
+  </aside>
+
+  <main class="ff-main">
+    <div class="ff-mobile-topbar">
+      <button id="ff-mobile-menu-btn" aria-label="Open menu">☰</button>
+      <div class="ff-navbar-logo" style="color:var(--ff-ink);">FoodFlow</div>
+      <span></span>
+    </div>
+
+    <!-- DASHBOARD -->
+    <section class="ff-view ff-active" data-view="dashboard">
+      <div class="ff-topbar"><div><h1 id="ff-rest-name">Dashboard</h1><p>Here's what's happening today.</p></div></div>
+      <div class="ff-stat-grid">
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Today's Orders</div><div class="ff-stat-value" id="ff-stat-orders">0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Today's Revenue</div><div class="ff-stat-value" id="ff-stat-revenue">₹0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Pending Orders</div><div class="ff-stat-value" id="ff-stat-pending">0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Active Deliveries</div><div class="ff-stat-value" id="ff-stat-active">0</div></div>
+      </div>
+      <h2 class="ff-view-title">⚡ Batching opportunities</h2>
+      <div id="ff-batch-alerts"></div>
+      <h2 class="ff-view-title">⚠️ Food waste alerts</h2>
+      <div id="ff-waste-alerts"></div>
+    </section>
+
+    <!-- ORDERS -->
+    <section class="ff-view" data-view="orders">
+      <div class="ff-topbar"><div><h1>Orders</h1><p>Accept, prepare, and hand off to delivery.</p></div></div>
+      <div id="ff-orders-list"></div>
+    </section>
+
+    <!-- MENU MANAGEMENT -->
+    <section class="ff-view" data-view="menu">
+      <div class="ff-topbar">
+        <div><h1>Menu Management</h1><p>Add, edit, or disable dishes.</p></div>
+        <button class="ff-btn ff-btn-primary ff-btn-sm" id="ff-add-menu-btn">+ Add Dish</button>
+      </div>
+      <div class="ff-card" id="ff-menu-list"></div>
+    </section>
+
+    <!-- INVENTORY -->
+    <section class="ff-view" data-view="inventory">
+      <div class="ff-topbar"><div><h1>Inventory</h1><p>Keep stock levels matched to demand.</p></div></div>
+      <div class="ff-card" id="ff-inventory-list" style="padding:10px 20px;"></div>
+    </section>
+
+    <!-- ANALYTICS -->
+    <section class="ff-view" data-view="analytics">
+      <div class="ff-topbar"><div><h1>Analytics</h1><p>Performance at a glance.</p></div></div>
+      <div class="ff-grid-2">
+        <div class="ff-card" style="padding:20px;">
+          <h3 style="margin-bottom:14px;">Popular dishes</h3>
+          <div id="ff-analytics-popular"></div>
+        </div>
+        <div class="ff-card" style="padding:20px;">
+          <h3 style="margin-bottom:14px;">Summary</h3>
+          <div id="ff-analytics-summary"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="ff-view" data-view="profile">
+      <div class="ff-topbar"><div><h1>Profile</h1><p>Your restaurant's account details.</p></div></div>
+      <div class="ff-card" style="padding:22px; max-width:420px;" id="ff-profile-content"></div>
+    </section>
+  </main>
+</div>
+
+<!-- Add/Edit dish modal -->
+<div class="ff-modal-backdrop" id="ff-menu-modal">
+  <div class="ff-modal">
+    <button class="ff-modal-close" id="ff-menu-modal-close">✕</button>
+    <h3 style="margin-bottom:18px;">Add dish</h3>
+    <form id="ff-menu-form">
+      <div class="ff-field"><label class="ff-label">Name</label><input class="ff-input" id="ff-menu-name" required /></div>
+      <div class="ff-field"><label class="ff-label">Price (₹)</label><input class="ff-input" type="number" id="ff-menu-price" required min="1" /></div>
+      <div class="ff-field"><label class="ff-label">Category</label><input class="ff-input" id="ff-menu-category" placeholder="Main Course" /></div>
+      <button class="ff-btn ff-btn-primary ff-btn-block" type="submit">Save Dish</button>
+    </form>
+  </div>
+</div>
+
+<!-- Smart assignment modal -->
+<div class="ff-modal-backdrop" id="ff-assign-modal">
+  <div class="ff-modal" style="max-width:460px;">
+    <button class="ff-modal-close" id="ff-assign-modal-close">✕</button>
+    <h3 style="margin-bottom:4px;">Smart Assignment</h3>
+    <p style="font-size:13px; margin-bottom:18px;">Recommended based on distance, active orders, and workload.</p>
+    <div id="ff-assign-candidates"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/restaurant.js"></script>
+</body>
+</html>

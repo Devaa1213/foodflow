@@ -1,0 +1,297 @@
+/* =========================================================
+   FOODFLOW — Landing page (cinematic scroll hero)
+   ========================================================= */
+
+.ff-navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 40px;
+  transition: background 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+  background: transparent;
+}
+.ff-navbar.ff-scrolled {
+  background: rgba(24, 19, 14, 0.82);
+  backdrop-filter: blur(10px);
+  padding: 14px 40px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+.ff-navbar-logo {
+  font-family: var(--ff-font-display);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.ff-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.ff-navbar-links a {
+  color: rgba(255,255,255,0.88);
+  font-size: 14.5px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.ff-navbar-links a:hover { opacity: 0.7; }
+.ff-navbar-actions { display: flex; align-items: center; gap: 14px; }
+.ff-navbar-toggle { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+
+/* Cinematic hero */
+.ff-anchor {
+  position: absolute;
+  top: 0;
+}
+.ff-hero-scroll-track {
+  height: 700vh; /* scroll distance that drives the frame sequence */
+  position: relative;
+}
+.ff-hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #14100c;
+}
+#ff-hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ff-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,12,9,0.35) 0%, rgba(15,12,9,0.05) 30%, rgba(15,12,9,0.15) 60%, rgba(12,9,7,0.75) 100%);
+  pointer-events: none;
+}
+#ff-hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ff-hero-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: #14100c;
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  z-index: 5;
+  transition: opacity 0.5s ease;
+}
+.ff-hero-loading.ff-hidden { opacity: 0; pointer-events: none; }
+
+.ff-hero-story {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+}
+.ff-hero-story-section {
+  position: absolute;
+  max-width: 640px;
+  opacity: 0;
+  color: #fff;
+}
+.ff-hero-story-section .ff-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 14px;
+}
+.ff-hero-story-section h2 {
+  font-size: clamp(28px, 4.2vw, 52px);
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+
+.ff-hero-final {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  padding: 0 24px;
+}
+.ff-hero-final .ff-brand {
+  font-family: var(--ff-font-display);
+  font-size: clamp(52px, 9vw, 108px);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.ff-hero-final .ff-tagline {
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.ff-hero-final .ff-subtagline {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 30px;
+  letter-spacing: 0.03em;
+}
+.ff-scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.55);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+}
+.ff-scroll-hint .ff-scroll-dot {
+  width: 1px; height: 30px;
+  background: rgba(255,255,255,0.4);
+  position: relative;
+  overflow: hidden;
+}
+.ff-scroll-hint .ff-scroll-dot::after {
+  content: '';
+  position: absolute;
+  top: -100%; left: 0; right: 0; height: 40%;
+  background: #fff;
+  animation: ff-scrolldot 1.8s ease-in-out infinite;
+}
+@keyframes ff-scrolldot { 0% { top: -40%; } 100% { top: 100%; } }
+
+/* Below-the-fold sections */
+.ff-section {
+  padding: 110px 0;
+}
+.ff-section-alt { background: var(--ff-cream-deep); }
+.ff-section-head {
+  max-width: 620px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.ff-section-head .ff-eyebrow {
+  color: var(--ff-accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+.ff-section-head h2 { font-size: clamp(28px, 3.6vw, 42px); }
+
+.ff-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.ff-step {
+  padding: 30px 26px;
+  background: var(--ff-white);
+  border: 1px solid var(--ff-line);
+  border-radius: var(--ff-radius-lg);
+}
+.ff-step-num {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--ff-accent-soft);
+  color: var(--ff-accent-deep);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 15px;
+  margin-bottom: 18px;
+}
+.ff-step h3 { font-size: 18px; margin-bottom: 8px; }
+.ff-step p { font-size: 14.5px; margin: 0; }
+
+.ff-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.ff-feature-card {
+  padding: 34px;
+  border-radius: var(--ff-radius-lg);
+  background: var(--ff-white);
+  border: 1px solid var(--ff-line);
+  position: relative;
+  overflow: hidden;
+}
+.ff-feature-card .ff-feature-tag {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ff-accent);
+  background: var(--ff-accent-soft);
+  padding: 5px 11px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+.ff-feature-card h3 { font-size: 21px; margin-bottom: 10px; }
+.ff-feature-card p { font-size: 14.5px; margin: 0; }
+
+.ff-restaurant-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.ff-restaurant-preview {
+  border-radius: var(--ff-radius-lg);
+  overflow: hidden;
+  background: var(--ff-white);
+  border: 1px solid var(--ff-line);
+}
+.ff-restaurant-preview .ff-rp-image {
+  height: 160px;
+  background: linear-gradient(135deg, var(--ff-accent-soft), var(--ff-cream-deep));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+}
+.ff-restaurant-preview .ff-rp-body { padding: 20px; }
+.ff-restaurant-preview h4 { font-size: 16.5px; margin-bottom: 4px; }
+.ff-restaurant-preview .ff-rp-meta { font-size: 13px; color: var(--ff-ink-soft); }
+
+.ff-cta-band {
+  background: var(--ff-ink);
+  color: #fff;
+  border-radius: var(--ff-radius-lg);
+  padding: 64px 48px;
+  text-align: center;
+  margin: 0 32px;
+}
+.ff-cta-band h2 { color: #fff; }
+.ff-cta-band p { color: rgba(255,255,255,0.68); max-width: 480px; margin: 0 auto 28px; }
+
+.ff-footer {
+  padding: 48px 0 28px;
+  text-align: center;
+  color: var(--ff-ink-soft);
+  font-size: 13px;
+}

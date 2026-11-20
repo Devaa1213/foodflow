@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FoodFlow — Admin</title>
+<link rel="stylesheet" href="css/global.css" />
+<link rel="stylesheet" href="css/dashboard.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<div class="ff-sidebar-backdrop" id="ff-sidebar-backdrop"></div>
+
+<div class="ff-app">
+  <aside class="ff-sidebar" id="ff-sidebar">
+    <div class="ff-sidebar-logo">FoodFlow</div>
+    <ul class="ff-sidebar-nav">
+      <li><button class="ff-nav-item ff-active" data-view="dashboard">🏠 Dashboard</button></li>
+      <li><button class="ff-nav-item" data-view="users">👥 Users</button></li>
+      <li><button class="ff-nav-item" data-view="restaurants">🍽️ Restaurants</button></li>
+      <li><button class="ff-nav-item" data-view="partners">🛵 Delivery Partners</button></li>
+      <li><button class="ff-nav-item" data-view="orders">📦 Orders</button></li>
+      <li><button class="ff-nav-item" data-view="analytics">📊 Analytics</button></li>
+    </ul>
+    <div class="ff-sidebar-foot">
+      <div class="ff-user-name" id="ff-sidebar-name">—</div>
+      <div class="ff-user-role">Admin</div>
+      <button class="ff-logout-btn" id="ff-logout-btn">Log Out</button>
+    </div>
+  </aside>
+
+  <main class="ff-main">
+    <div class="ff-mobile-topbar">
+      <button id="ff-mobile-menu-btn" aria-label="Open menu">☰</button>
+      <div class="ff-navbar-logo" style="color:var(--ff-ink);">FoodFlow</div>
+      <span></span>
+    </div>
+
+    <!-- DASHBOARD -->
+    <section class="ff-view ff-active" data-view="dashboard">
+      <div class="ff-topbar"><div><h1>System Overview</h1><p>Live statistics across FoodFlow.</p></div></div>
+      <div class="ff-stat-grid">
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Total Users</div><div class="ff-stat-value" id="ff-stat-users">0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Total Restaurants</div><div class="ff-stat-value" id="ff-stat-restaurants">0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Total Orders</div><div class="ff-stat-value" id="ff-stat-orders">0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Active Deliveries</div><div class="ff-stat-value" id="ff-stat-active">0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Revenue</div><div class="ff-stat-value" id="ff-stat-revenue">₹0</div></div>
+        <div class="ff-card ff-stat-card"><div class="ff-stat-label">Completed Orders</div><div class="ff-stat-value" id="ff-stat-completed">0</div></div>
+      </div>
+    </section>
+
+    <!-- USERS -->
+    <section class="ff-view" data-view="users">
+      <div class="ff-topbar"><div><h1>Users</h1><p>Everyone registered on FoodFlow.</p></div></div>
+      <div class="ff-card" id="ff-users-content"></div>
+    </section>
+
+    <!-- RESTAURANTS -->
+    <section class="ff-view" data-view="restaurants">
+      <div class="ff-topbar"><div><h1>Restaurants</h1><p>Kitchens on the platform.</p></div></div>
+      <div class="ff-card" id="ff-restaurants-content"></div>
+    </section>
+
+    <!-- DELIVERY PARTNERS -->
+    <section class="ff-view" data-view="partners">
+      <div class="ff-topbar"><div><h1>Delivery Partners</h1><p>Who's online and active.</p></div></div>
+      <div class="ff-card" id="ff-partners-content"></div>
+    </section>
+
+    <!-- ORDERS -->
+    <section class="ff-view" data-view="orders">
+      <div class="ff-topbar"><div><h1>Orders</h1><p>Every order across the platform.</p></div></div>
+      <div class="ff-card" id="ff-orders-content"></div>
+    </section>
+
+    <!-- ANALYTICS -->
+    <section class="ff-view" data-view="analytics">
+      <div class="ff-topbar"><div><h1>Analytics</h1><p>Platform-wide performance.</p></div></div>
+      <div class="ff-grid-2">
+        <div class="ff-card" style="padding:20px;">
+          <h3 style="margin-bottom:14px;">Popular dishes</h3>
+          <div id="ff-analytics-popular"></div>
+        </div>
+        <div class="ff-card" style="padding:20px;">
+          <h3 style="margin-bottom:14px;">Top restaurants</h3>
+          <div id="ff-analytics-top-restaurants"></div>
+        </div>
+      </div>
+      <div class="ff-card" style="padding:20px; margin-top:20px;" id="ff-analytics-summary"></div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
